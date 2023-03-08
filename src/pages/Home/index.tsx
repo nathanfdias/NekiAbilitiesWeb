@@ -19,6 +19,7 @@ export function Home() {
                         Menu Acess 
                     </ButtonAccess>
                 </HomeDescript>
+                <p>Teste</p>
             </HomeBackground>
         </HomeContainer>
     )

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavBarContainer = styled.main`
   position: sticky;
   height: 70px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: #2a3e4e;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +29,7 @@ export const LogoImg = styled.img`
 
 export const Icon = styled.div`
   cursor: pointer;
-  color: #ffff;
+  color: #fff;
   display: none;
   @media (max-width: 800px) {
     display: block;
@@ -72,14 +72,14 @@ export const NavBarListAct = styled.ul`
     left: 0;
     list-style: none;
     text-decoration: none;
-    background-color: #222;
+    /* background-color: #222; */
   }
 `;
 
 export const Link = styled.div`
   font-size: 1.2rem;
   text-decoration: none;
-  color: #F0BF8C;
+  color: #fff;
   text-align: center;
   padding: 10px;
   margin: 0px 5px;
@@ -89,7 +89,7 @@ export const Link = styled.div`
   transition: 250ms;
 
   &:hover {
-    border-color: #F0BF8C;
+    border-color: #fff;
     transition: 250ms;
   }
 
@@ -110,7 +110,7 @@ export const Link = styled.div`
 `;
 
 export const DefaultColor = styled.div`
-  color: #F0BF8C;
+  color: #fff;
 `;
 
 

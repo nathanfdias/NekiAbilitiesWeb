@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   NavBarContainer,
   NavBarLogo,
@@ -8,19 +8,15 @@ import {
   Link,
   NavBarList,
   NavBarListAct,
-  LogoImg,
   DefaultColor,
 } from "./style";
 import {
   List,
   X,
-  User,
-  SignOut,
   House,
-  ForkKnife,
   Gear,
+  Notepad
 } from "phosphor-react";
-import { toast } from "react-toastify";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
@@ -44,9 +40,9 @@ export function Navbar() {
         </Item>
         <Item>
           <Link>
-            <NavLink to="/products">
+            <NavLink to="/catalog">
               <DefaultColor>
-                <ForkKnife size={22} alt={"Catalog"} />
+                <Notepad size={22} alt={"Skill Catalog"} />
               </DefaultColor>
             </NavLink>
           </Link>

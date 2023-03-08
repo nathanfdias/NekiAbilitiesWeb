@@ -7,7 +7,7 @@ export const HomeContainer = styled.main`
 `;
 
 export const HomeBackground = styled.div`
-background-color: black;
+/* background-color: ; */
 height: 100%;
 display: flex;
 align-items: center;
@@ -28,7 +28,7 @@ align-items: center;
 export const HomeDescript = styled.div`
   width: 540px;
   height: 400px;
-  color: #fff;
+  color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,9 +56,9 @@ export const ButtonAccess = styled.button`
   padding-inline: 1.6rem;
   padding-block: 1rem;
   font-size: 1.2rem;
-  border: 1px solid #fff3;
+  border: 1px solid;
   background-color: transparent;
-  color: #fff;
+  color: #000;
   cursor: pointer;
 
   &:hover {
