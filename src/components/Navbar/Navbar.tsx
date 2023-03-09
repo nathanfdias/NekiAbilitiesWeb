@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/Logo-Neki.png";
 import {
   NavBarContainer,
   NavBarLogo,
@@ -8,14 +9,16 @@ import {
   Link,
   NavBarList,
   NavBarListAct,
-  DefaultColor,
+  LogoImg,
+  DefaultColor
 } from "./style";
 import {
   List,
   X,
   House,
   Gear,
-  Notepad
+  Notepad,
+  User
 } from "phosphor-react";
 
 export function Navbar() {
@@ -34,6 +37,15 @@ export function Navbar() {
             <NavLink to="/">
               <DefaultColor>
                 <House size={22} alt={"Home Page"} />
+              </DefaultColor>
+            </NavLink>
+          </Link>
+        </Item>
+        <Item>
+          <Link>
+            <NavLink to="/perfil">
+              <DefaultColor>
+                <User size={22} alt={"My abilities"} />
               </DefaultColor>
             </NavLink>
           </Link>
@@ -63,8 +75,7 @@ export function Navbar() {
   return (
     <NavBarContainer>
       <NavBarLogo>
-        Neki Logo
-        {/* <LogoImg src={#} />{" "} */}
+        <LogoImg src={logo} />{" "}
       </NavBarLogo>
 
       {menuClick ? (

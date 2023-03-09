@@ -24,7 +24,8 @@ export const NavBarLogo = styled.span`
 `;
 
 export const LogoImg = styled.img`
-  height: 2.6rem;
+  height: 3rem;
+  filter: invert(1) hue-rotate(180deg);
 `
 
 export const Icon = styled.div`
@@ -72,7 +73,7 @@ export const NavBarListAct = styled.ul`
     left: 0;
     list-style: none;
     text-decoration: none;
-    /* background-color: #222; */
+    background-color: #2a3e4e;
   }
 `;
 

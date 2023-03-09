@@ -1,4 +1,4 @@
-import { HomeContainer, HomeBackground, HomeDescript, LogoContainer, DescriptText, Logo, ButtonAccess} from './style';
+import { HomeContainer, HomeBackground, HomeDescript, LogoContainer, DescriptText, ButtonAccess} from './style';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar/Navbar';
 
