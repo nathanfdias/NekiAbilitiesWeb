@@ -19,7 +19,7 @@ export function Home() {
                             <p>A website project to help neki developers manage their abilities.</p>
                         </DescriptText>
                         <ButtonAccess onClick={() => navigate('/products')}>
-                            Menu Acess 
+                            See the abilities
                         </ButtonAccess>
                     </Test>
                 </HomeDescript>

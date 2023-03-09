@@ -16,7 +16,7 @@ import {
   List,
   X,
   House,
-  Gear,
+  SignOut,
   Notepad,
   User
 } from "phosphor-react";
@@ -61,9 +61,9 @@ export function Navbar() {
         </Item>
         <Item>
           <Link>
-            <NavLink to="/config">
+            <NavLink to="/login">
               <DefaultColor>
-                <Gear size={22} alt={"Config"} />
+                <SignOut size={22} alt={"Login"} />
               </DefaultColor>
             </NavLink>
           </Link>

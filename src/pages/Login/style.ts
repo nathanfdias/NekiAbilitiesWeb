@@ -149,3 +149,15 @@ export const LabelContent = styled.label`
     color: #000900;
     font-size: 1rem;
 `
+export const CheckBoxRemembered = styled.input`
+  cursor: pointer;
+`;
+
+export const Label = styled.label`
+  font-size: 1rem;
+  padding-inline: 8px;
+`;
+
+export const CheckBoxContainer = styled.div`
+  margin-top: 2rem;
+`;

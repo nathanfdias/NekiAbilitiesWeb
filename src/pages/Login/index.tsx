@@ -16,6 +16,9 @@ import {
   RightContent,
   RightContentImg,
   Subtitle,
+  CheckBoxRemembered,
+  Label,
+  CheckBoxContainer
 } from "./style";
 import { toast } from 'react-toastify';
 
@@ -78,6 +81,10 @@ export function Login() {
                 <Eye onClick={(e) => handleClickShowPassword(e)} />
               </InputPasswordVisibility>
             </InputPasswordContent>
+            <CheckBoxContainer>
+              <CheckBoxRemembered type="checkbox" id="check" name="check" />
+              <Label>Lembrar de mim</Label>
+            </CheckBoxContainer>
           </InputContainer>
           <ButtonLogin onClick={(e) => handleSignIn(e)}>
             Login

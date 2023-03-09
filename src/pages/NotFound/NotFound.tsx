@@ -7,7 +7,7 @@ const NotFound = () => {
 
   const goHome = useCallback(() => {
     navigate('/');
-  }, []);
+  }, [navigate]);
 
 
   return (
