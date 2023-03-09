@@ -1,9 +1,95 @@
+import { useState } from "react";
+import { Eye } from "phosphor-react";
+import { NavLink, useNavigate } from "react-router-dom";
+import LoginImg from "../../assets/imageLogin.jpg";
+import {
+  ButtonLogin,
+  InputContainer,
+  InputPasswordContent,
+  InputPasswordVisibility,
+  InputTextPassword,
+  InputTextUsername,
+  LabelContent,
+  LeftContent,
+  LoginContainer,
+  LoginContent,
+  RightContent,
+  RightContentImg,
+  Subtitle,
+} from "./style";
+import { toast } from 'react-toastify';
+
 export function Login() {
-    return(
-        <>
-            <p>
-                Teste Login
-            </p>
-        </>
-    )    
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleClickShowPassword = (e: any) => {
+    if (showPassword === false) {
+      setShowPassword(true);
+    }
+    if (showPassword === true) {
+      setShowPassword(false);
+    }
+  };
+
+  const handleSignIn = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    // api
+    // .post("/auth/signin", {
+    //   username: username,
+    //   password: password,
+    // })
+    // .then((request) => {
+    //   toast.success("Login successful !");
+    //   auth.authenticate(request.data);
+    //   navigate("/");
+    // })
+    // .catch((err) => {
+    //   toast.error(err.response.data.message);
+    // });
+};
+
+
+  return (
+    <LoginContainer>
+      <LoginContent>
+        <LeftContent>
+          <h1>Bem vindo!</h1>
+          <Subtitle>
+            Faça login para acessar nosso site, ou cadastre-se
+          </Subtitle>
+          <InputContainer>
+            <LabelContent>Username:</LabelContent>
+            <InputTextUsername
+              type="text"
+              placeholder="Digite seu username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <LabelContent>Password:</LabelContent>
+            <InputPasswordContent>
+              <InputTextPassword
+                type={showPassword ? "text" : "password"}
+                placeholder="Digite sua senha"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <InputPasswordVisibility>
+                <Eye onClick={(e) => handleClickShowPassword(e)} />
+              </InputPasswordVisibility>
+            </InputPasswordContent>
+          </InputContainer>
+          <ButtonLogin onClick={(e) => handleSignIn(e)}>
+            Login
+          </ButtonLogin>
+          <p>
+            Não possui uma conta? <NavLink to="/register">Cadastre-se</NavLink>
+          </p>
+        </LeftContent>
+        <RightContent>
+          <RightContentImg src={LoginImg} />
+        </RightContent>
+      </LoginContent>
+    </LoginContainer>
+  );
 }
