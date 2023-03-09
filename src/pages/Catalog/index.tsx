@@ -1,6 +1,7 @@
 import { AbilityImage,AbilitysBoxContainer,AbilitysBoxDescript,AbilitysBoxTitle,AbilitysContainer,AbilitysMap,
-AbilitysNewAbilityContainer,CreateAbilityButton,FormInputContainer,FormInputContainerAbilitys, FormInput, CardAbilityContainer, InputCheckbox } from './style';
+AbilitysNewAbilityContainer,CreateAbilityButton,FormInputContainerAbilitys, FormInput, CardAbilityContainer, InputCheckbox } from './style';
 import { Navbar } from '../../components/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 export function Catalog() {
     return(
@@ -10,9 +11,11 @@ export function Catalog() {
                 <AbilitysMap>
                     <FormInputContainerAbilitys>
                         <FormInput type="text" placeholder="Pesquise as Skills" />
-                        <CreateAbilityButton>
-                                Criar Nova Skill
-                        </CreateAbilityButton>
+                        <Link to="/abilityForm">
+                            <CreateAbilityButton >
+                                    Criar Nova Skill
+                            </CreateAbilityButton>
+                        </Link>
                     </FormInputContainerAbilitys>
                     {/* Inicio do Mapper para puxar da API */}
                     <CardAbilityContainer key={1}>

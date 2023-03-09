@@ -85,7 +85,7 @@ export const CreateAbilityButton = styled.button`
     border-radius: 10px;
     font-size: 1rem;
     font-weight: bolder;
-    background-color: #00A8FF;
+    background-color: #2a3e4e;
     color: white;
     cursor: pointer;
 `;
