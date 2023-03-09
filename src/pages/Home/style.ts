@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import imageRight from "../../assets/bab.jpg";
+import imageRight from "../../assets/imageRight.jpg";
 
 export const HomeContainer = styled.main`
   width: 100%;
@@ -7,28 +7,17 @@ export const HomeContainer = styled.main`
 `;
 
 export const HomeBackground = styled.div`
-/* background-color: ; */
 height: 100%;
 display: flex;
 align-items: center;
-  /* height: 100%;
-  background-image: url(${imageRight});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  @media (max-width: 879px) {
-    justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-                       rgba(0, 0, 0, 0.5)),url(${imageRight});
-  } */
+background-color: #FFFAFA;
 `;
 
 export const HomeDescript = styled.div`
-  width: 540px;
-  height: 400px;
-  color: #000;
+  width: 40%;
+  height: 100%;
+  color: #11114E;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +25,22 @@ export const HomeDescript = styled.div`
   gap: 0.4rem;
 `;
 
-export const LogoContainer = styled.div``;
+export const HomeImageIlustration = styled.div`
+  height: 80%;
+  width: 60%;
+  background-image: url(${imageRight});
+  background-size: cover;
+  background-position: center;
+`;
+
+export const Test = styled.div`
+max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+`;
 
 export const Logo = styled.img`
   height: 6rem;
@@ -44,7 +48,6 @@ export const Logo = styled.img`
 
 export const DescriptText = styled.div`
   font-size: 1.4rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,16 +55,44 @@ export const DescriptText = styled.div`
 `;
 
 export const ButtonAccess = styled.button`
-  margin-top: 1rem;
-  padding-inline: 1.6rem;
-  padding-block: 1rem;
-  font-size: 1.2rem;
-  border: 1px solid;
-  background-color: transparent;
-  color: #000;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #fff1;
-  }
+align-items: center;
+background-clip: padding-box;
+background-color: #00A8FF;
+border: 1px solid transparent;
+border-radius: .25rem;
+box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+display: inline-flex;
+font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 1.2rem;
+font-weight: 600;
+justify-content: center;
+line-height: 1.25;
+margin: 0;
+min-height: 3.8rem;
+padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+position: relative;
+text-decoration: none;
+transition: all 250ms;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+vertical-align: baseline;
+width: auto;
+&:hover{
+    background-color: #00A6FF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    transform: translateY(-1px);
+}
+&:focus{
+    background-color: #00A6FF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+&:active{
+    background-color: #11B8FF;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+   transform: translateY(0);
+}
 `;

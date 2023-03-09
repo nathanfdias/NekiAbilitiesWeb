@@ -1,6 +1,7 @@
-import { HomeContainer, HomeBackground, HomeDescript, LogoContainer, DescriptText, ButtonAccess} from './style';
+import { HomeContainer, HomeBackground, HomeDescript, DescriptText, Test, ButtonAccess,Logo ,HomeImageIlustration} from './style';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar/Navbar';
+import logo from '../../assets/Logo-Neki2.png';
 
 export function Home() {
     const navigate = useNavigate();
@@ -9,17 +10,20 @@ export function Home() {
             <Navbar />
             <HomeBackground>
                 <HomeDescript>
-                    <LogoContainer>
-                    </LogoContainer>
-                    <DescriptText>
-                        <h1>Neki Abilities</h1>
-                        <p>Your ability control!</p>
-                    </DescriptText>
-                    <ButtonAccess onClick={() => navigate('/products')}>
-                        Menu Acess 
-                    </ButtonAccess>
+                    <Test>
+                        <div>
+                            <Logo src={logo} />
+                        </div>
+                        <DescriptText>
+                            <h1>Neki Abilities</h1>
+                            <p>A website project to help neki developers manage their abilities.</p>
+                        </DescriptText>
+                        <ButtonAccess onClick={() => navigate('/products')}>
+                            Menu Acess 
+                        </ButtonAccess>
+                    </Test>
                 </HomeDescript>
-                <p>Teste</p>
+                <HomeImageIlustration />
             </HomeBackground>
         </HomeContainer>
     )
