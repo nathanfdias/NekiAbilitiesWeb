@@ -7,7 +7,7 @@ export function AbilityForm() {
             <Navbar />
             <FormAddSkill>
                 <FormAddSkillContainer>
-                    <h2>Create Ability</h2>
+                    <h2>Criar Skill</h2>
                     <InputContainerCreateSkill>
                         <InputSkillCreate 
                             type="text"
