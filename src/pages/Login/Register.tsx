@@ -15,7 +15,6 @@ import {
   LoginContent,
   RightContent,
   RightContentImg,
-  Subtitle,
 } from "./style";
 import axios from 'axios';
 import { toast } from 'react-toastify';

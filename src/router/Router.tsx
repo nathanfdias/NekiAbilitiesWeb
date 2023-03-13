@@ -1,4 +1,10 @@
-import { Route, Routes, Navigate} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { ReactNode, useEffect, useState } from "react";
+import {
+  isAuthenticatedAdmin,
+  isAuthenticated,
+  isLogged,
+} from "../service/auth";
 
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
@@ -7,6 +13,7 @@ import { Catalog } from "../pages/Catalog";
 import { Perfil } from "../pages/Perfil";
 import { AbilityForm } from "../pages/AbilityForm";
 import { NotFound } from "../pages/NotFound";
+
 
 export function Router() {
     return (

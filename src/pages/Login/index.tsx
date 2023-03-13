@@ -21,12 +21,15 @@ import {
   CheckBoxContainer
 } from "./style";
 import { toast } from 'react-toastify';
+import { useAuth } from "../../utils/useAuth";
+import api from '../../service/api';
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const auth = useAuth();
   const navigate = useNavigate();
 
   const handleClickShowPassword = (e: any) => {
@@ -39,19 +42,19 @@ export function Login() {
   };
 
   const handleSignIn = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
-    // api
-    // .post("/auth/signin", {
-    //   username: username,
-    //   password: password,
-    // })
-    // .then((request) => {
-    //   toast.success("Login successful !");
-    //   auth.authenticate(request.data);
-    //   navigate("/");
-    // })
-    // .catch((err) => {
-    //   toast.error(err.response.data.message);
-    // });
+    api
+    .post("/auth/signin", {
+      username: username,
+      password: password,
+    })
+    .then((request) => {
+      toast.success("Login successful !");
+      auth.authenticate(request.data);
+      navigate("/");
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message);
+    });
 };
 
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/Logo-Neki.png";
 import {
   NavBarContainer,
@@ -20,13 +20,35 @@ import {
   Notepad,
   User
 } from "phosphor-react";
+import api from "../../service/api";
+import { getUserLocalStorage } from "../../context/authProvider/util";
+import { useAuth } from "../../utils/useAuth";
+import { toast } from "react-toastify";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const user = getUserLocalStorage();
 
   const toggleMenuClick = () => {
     setMenuClick(!menuClick);
   };
+
+  function handleSignout() {
+    api
+      .post("/auth/signout")
+      .then(() => {
+        localStorage.removeItem("user");
+        navigate("/");
+        toast.warning("Usuário deslogado");
+      })
+      .catch((error) => {
+        if (error.message === "Failed to refresh token") {
+          navigate("/login");
+        }
+      });
+  }
 
 
   const ListLinks = () => {
@@ -59,15 +81,27 @@ export function Navbar() {
             </NavLink>
           </Link>
         </Item>
-        <Item>
-          <Link>
-            <NavLink to="/login">
-              <DefaultColor>
-                <SignOut size={22} alt={"Login"} />
-              </DefaultColor>
-            </NavLink>
-          </Link>
-        </Item>
+        {user == null ? (
+           <Item>
+           <Link>
+             <NavLink to="/login">
+               <DefaultColor>
+                 <User size={22} alt={"LogIn"} />
+               </DefaultColor>
+             </NavLink>
+           </Link>
+         </Item>
+        ) : (
+          <Item>
+            <Link>
+              <NavLink to="/login">
+                <DefaultColor>
+                  <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
+                </DefaultColor>
+              </NavLink>
+            </Link>
+          </Item>
+        )}
       </>
     );
   };
