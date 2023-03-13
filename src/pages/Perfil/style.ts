@@ -72,7 +72,7 @@ export const InputEditLevel = styled.input`
     min-width: 170px;
 `;
 
-export const SkillImage = styled.image`
+export const SkillImage = styled.img`
     width: 140px;
     height: 140px;
     background-color: #00A8FF;

@@ -18,7 +18,8 @@ import {
   House,
   SignOut,
   Notepad,
-  User
+  User,
+  Archive
 } from "phosphor-react";
 import api from "../../service/api";
 import { getUserLocalStorage } from "../../context/authProvider/util";
@@ -67,7 +68,7 @@ export function Navbar() {
           <Link>
             <NavLink to="/perfil">
               <DefaultColor>
-                <User size={22} alt={"My abilities"} />
+                <Archive size={22} alt={"My abilities"} />
               </DefaultColor>
             </NavLink>
           </Link>
