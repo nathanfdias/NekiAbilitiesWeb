@@ -21,19 +21,18 @@ interface IUserAbilities {
   id: number;
   username: string;
   userAbility: Array<IUserAbility>;
-};
-
+}
 
 interface IUserAbility {
   id: number;
-    knowledgeLevel: number;
-    ability: {
-      id: number;
-      name: string;
-      version: string;
-      description: string;
-      image_url: string;
-    }
+  knowledgeLevel: number;
+  ability: {
+    id: number;
+    name: string;
+    version: string;
+    description: string;
+    image_url: string;
+  };
 }
 
 export function Perfil() {
@@ -50,27 +49,40 @@ export function Perfil() {
       .then((response) => {
         setUserAbilities(response.data);
       })
+      .catch((error) => {})
+      .finally(() => {});
+  }, [user?.id]);
+
+  const deleteUserAbility = (idUserAbility: number) => {
+    api
+      .delete(`/userAbility/${idUserAbility}`)
+      .then((response) => {
+        toast(`UserAbility deletada id: ${idUserAbility}`);
+      })
       .catch((error) => {
+        toast(error);
       })
       .finally(() => {
+        refresh();
       });
-  }, [user?.id]);
+  };
 
   function updateUserAbility() {
     api
-      .put(`/userAbility/${idUserAbility}`,
-      {
-        "user": {
-          "id": user?.id
+      .put(`/userAbility/${idUserAbility}`, {
+        user: {
+          id: user?.id,
         },
-        "ability": {
-          "id": idAbility
+        ability: {
+          id: idAbility,
         },
-        "knowledgeLevel": knowledgeLevel
-      }).then((response) => {
+        knowledgeLevel: knowledgeLevel,
+      })
+      .then((response) => {
         toast.success("Level Atualizado com sucesso!");
         setPopup(false);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         toast.warning("Erro ao Atualizar");
       })
       .finally(() => {
@@ -78,7 +90,7 @@ export function Perfil() {
       });
   }
 
-  function handleSetValues(userAbility: IUserAbility){
+  function handleSetValues(userAbility: IUserAbility) {
     setIdUserAbility(userAbility?.id);
     setPopup(true);
     setIdAbility(userAbility?.ability?.id);
@@ -90,26 +102,40 @@ export function Perfil() {
 
   console.log(user?.id);
   console.log(userAbilities);
+  console.log(userAbilities?.userAbility);
 
   return (
     <PerfilContainer>
       <Navbar />
       <PerfilBoxesContainer>
-        {/* Inicio Mapeamento */}
-        {userAbilities?.userAbility.map((userAbility) => { 
-           return (
-          <PerfilItensMap key={userAbility?.id}>
-            <PerfilSkillBoxTitle>
-              <p>Skill: {userAbility?.ability?.name}</p>
-              <p>Version: {userAbility?.ability?.version}</p>
-              <p>Level: {userAbility?.knowledgeLevel}</p>
-            </PerfilSkillBoxTitle>
-            <SkillImage src={userAbility?.ability?.image_url}/>
-            <SkillBoxButton onClick={() => handleSetValues(userAbility)}>Level Edit</SkillBoxButton>
-            <SkillBoxButton>Delete Skill</SkillBoxButton>
-          </PerfilItensMap>
-         ); 
-         })}
+        {userAbilities?.userAbility.length === 0 ? (
+          <div>
+            <h1>VAZIO MEU AMIGO</h1>
+          </div>
+        ) : (
+          <>
+            {userAbilities?.userAbility.map((userAbility) => {
+              return (
+                <PerfilItensMap key={userAbility?.id}>
+                  <PerfilSkillBoxTitle>
+                    <p>Skill: {userAbility?.ability?.name}</p>
+                    <p>Version: {userAbility?.ability?.version}</p>
+                    <p>Level: {userAbility?.knowledgeLevel}</p>
+                  </PerfilSkillBoxTitle>
+                  <SkillImage src={userAbility?.ability?.image_url} />
+                  <SkillBoxButton onClick={() => handleSetValues(userAbility)}>
+                    Level Edit
+                  </SkillBoxButton>
+                  <SkillBoxButton
+                    onClick={() => deleteUserAbility(userAbility?.id)}
+                  >
+                    Delete Skill
+                  </SkillBoxButton>
+                </PerfilItensMap>
+              );
+            })}
+          </>
+        )}
         <Popup trigger={popup} setTrigger={setPopup}>
           <FormEditPopupContent>
             <InputEditLevel
