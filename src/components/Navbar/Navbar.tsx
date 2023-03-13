@@ -23,12 +23,10 @@ import {
 } from "phosphor-react";
 import api from "../../service/api";
 import { getUserLocalStorage } from "../../context/authProvider/util";
-import { useAuth } from "../../utils/useAuth";
 import { toast } from "react-toastify";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
-  const auth = useAuth();
   const navigate = useNavigate();
   const user = getUserLocalStorage();
 

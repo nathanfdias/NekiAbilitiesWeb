@@ -100,7 +100,7 @@ export const FormInputContainerAbilitys = styled.div`
     justify-content: space-between;
 `;
 
-export const AbilityImage = styled.image`
+export const AbilityImage = styled.img`
     width: 140px;
     height: 140px;
     background-color: #00A8FF;

@@ -100,10 +100,6 @@ export function Perfil() {
     window.location.reload();
   };
 
-  console.log(user?.id);
-  console.log(userAbilities);
-  console.log(userAbilities?.userAbility);
-
   return (
     <PerfilContainer>
       <Navbar />
