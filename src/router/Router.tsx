@@ -5,7 +5,6 @@ import {
   isAuthenticated,
   isLogged,
 } from "../service/auth";
-import { toast} from 'react-toastify';
 
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
@@ -23,7 +22,6 @@ interface RoutesPath {
   path: string;
 }
 
-//Não reconhece o Admin
 const PrivateAdmin = ({ children }: PrivateAdminProps): JSX.Element => {
   const [isAuthenticated, setIsAuthenticated] = useState<String | undefined>(
     undefined
@@ -59,7 +57,6 @@ const PrivateAdmin = ({ children }: PrivateAdminProps): JSX.Element => {
   }
 };
 
-//Não reconhece o User
 const PrivateRoute = ({ children }: PrivateAdminProps): JSX.Element => {
   const [isAuth, setIsAuthenticated] = useState<String | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
@@ -87,9 +84,9 @@ const PrivateRoute = ({ children }: PrivateAdminProps): JSX.Element => {
     return <>{children}</>;
   } else if (isAuth === "Failed to refresh token") {
     localStorage.removeItem("user");
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   } else {
-    return <Navigate to="/404" />;
+    return <Navigate to="/login" />;
   }
 };
 
@@ -116,6 +113,7 @@ export function Router() {
         }
       ></Route>
       <Route path="/register" element={ <IsLoggedIn><Register /></IsLoggedIn>}></Route>
+      {/* <Route path="/catalog" element={<PrivateRoute><Catalog /></PrivateRoute>}></Route> */}
       <Route path="/catalog" element={<Catalog />}></Route>
       <Route path="/perfil" element={<Perfil />}></Route>
       <Route path="/abilityForm" element={<AbilityForm />}></Route>

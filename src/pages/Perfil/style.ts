@@ -88,3 +88,18 @@ export const SkillBoxButton = styled.button`
     background-color: #2a3e4e;
     color: white;
 `;
+
+export const SkillTextEmpty = styled.h1`
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  font-style: italic;
+  text-align: center;
+  margin: 1rem 0;
+`;
+
+export const SkillEmptyContainer = styled.div`
+    height: 70vh;
+    display: flex;
+    align-items: center;
+`;

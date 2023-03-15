@@ -18,7 +18,7 @@ export function Home() {
                             <h1>Neki Abilities</h1>
                             <p>A website project to help neki developers manage their abilities.</p>
                         </DescriptText>
-                        <ButtonAccess onClick={() => navigate('/products')}>
+                        <ButtonAccess onClick={() => navigate('/catalog')}>
                             See the abilities
                         </ButtonAccess>
                     </Test>

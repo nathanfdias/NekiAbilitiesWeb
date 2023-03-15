@@ -62,7 +62,10 @@ export function Navbar() {
             </NavLink>
           </Link>
         </Item>
-        <Item>
+        {user == null ? (
+          <></>
+        ) : (
+          <Item>
           <Link>
             <NavLink to="/perfil">
               <DefaultColor>
@@ -71,6 +74,7 @@ export function Navbar() {
             </NavLink>
           </Link>
         </Item>
+        )}
         <Item>
           <Link>
             <NavLink to="/catalog">

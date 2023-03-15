@@ -10,6 +10,8 @@ import {
   InputEditLevel,
   SkillImage,
   SkillBoxButton,
+  SkillTextEmpty,
+  SkillEmptyContainer
 } from "./style";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Popup } from "../../components/popup";
@@ -105,9 +107,9 @@ export function Perfil() {
       <Navbar />
       <PerfilBoxesContainer>
         {userAbilities?.userAbility.length === 0 ? (
-          <div>
-            <h1>VAZIO MEU AMIGO</h1>
-          </div>
+          <SkillEmptyContainer>
+            <SkillTextEmpty>Nenhuma skill cadastrada!</SkillTextEmpty>
+          </SkillEmptyContainer>
         ) : (
           <>
             {userAbilities?.userAbility.map((userAbility) => {
