@@ -4,7 +4,7 @@ import {
   setUserLocalStorage
 } from "../context/authProvider/util";
 
-/* This is creating a new instance of axios with the baseURL and headers. */
+/* Criação de nova instance com url e Headers. */
 const instance = axios.create({
   baseURL: "http://localhost:8080",
   headers: {
@@ -12,7 +12,7 @@ const instance = axios.create({
   },
 });
 
-/* This is adding the access token to the header of the request. */
+/* Adiciona o token de acesso ao cabeçalho do pedido. */
 instance.interceptors.request.use(
   (config) => {
     const user = getUserLocalStorage();
@@ -26,8 +26,7 @@ instance.interceptors.request.use(
   }
 );
 
-/* Intercepting the response and checking if the response is 401 (unauthorized) and if it is, it will
-try to refresh the token. */
+/* Interceptar a resposta e verificar se ela é 401 (não autorizada) e, se for, tentar atualizar o token. */
 instance.interceptors.response.use(
   (res) => {
     return res;
@@ -41,7 +40,7 @@ instance.interceptors.response.use(
       err.response &&
       originalConfig.url !== "/auth/refreshtoken"
     ) {
-      // Access Token was expired
+      // Access Token estava expired
       if (err.response.status === 401 && !originalConfig._retry) {
         originalConfig._retry = true;
 
@@ -63,3 +62,11 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+
+// Este código é um arquivo que exporta uma instância do Axios, uma biblioteca JavaScript para fazer requisições HTTP. A instância criada já possui a URL base da API definida como "http://localhost:8080" e o header padrão de "Content-Type" como "application/json".
+
+// Em seguida, são adicionados dois interceptors, que são funções que são executadas antes ou depois da requisição ser feita. O primeiro interceptor adiciona o token de acesso ao header da requisição, caso o usuário esteja autenticado, usando a função "getUserLocalStorage()" do arquivo "authProvider/util".
+
+// O segundo interceptor intercepta a resposta da requisição e verifica se ela retornou um erro de 401 (não autorizado), que indica que o token de acesso expirou. Nesse caso, ele tenta atualizar o token de acesso chamando a rota "/auth/refreshtoken" da API, usando a função "instance.post()". Se a atualização for bem-sucedida, o novo token de acesso é salvo no localStorage usando a função "setUserLocalStorage()" do arquivo "authProvider/util" e a requisição original é refeita com o novo token de acesso.
+
+// Se a atualização do token de acesso falhar, uma exceção será lançada com a mensagem "Failed to refresh token".

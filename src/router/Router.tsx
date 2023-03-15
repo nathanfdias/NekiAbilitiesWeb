@@ -122,3 +122,15 @@ export function Router() {
     </Routes>
   );
 }
+
+// Esse código implementa a navegação em uma aplicação web usando React Router. Ele define uma série de rotas (routes) para diferentes URLs da aplicação, e cada rota especifica um elemento (element) que será renderizado quando o usuário acessar a URL correspondente.
+
+// O componente Router é o componente raiz da navegação e contém uma lista de rotas definidas com o componente Routes. As rotas são definidas com o componente Route, que recebe uma prop path com a URL correspondente e uma prop element com o componente que será renderizado quando essa URL for acessada.
+
+// O código também define três componentes personalizados para lidar com a autenticação e autorização de usuários: PrivateAdmin, PrivateRoute e IsLoggedIn.
+
+// O componente PrivateAdmin verifica se o usuário autenticado é um administrador e só permite o acesso às rotas filhas se o usuário estiver autenticado e for um administrador. O componente PrivateRoute verifica se o usuário está autenticado e só permite o acesso às rotas filhas se o usuário estiver autenticado. O componente IsLoggedIn verifica se o usuário está autenticado e só permite o acesso às rotas filhas se o usuário não estiver autenticado.
+
+// Cada componente de autenticação usa o useState para definir o estado de autenticação. Quando o componente é montado, ele chama a função checkAuth que verifica se o usuário está autenticado, e define o estado de autenticação de acordo. Quando a verificação de autenticação está em andamento, o componente renderiza uma mensagem "Loading...". Se o usuário não está autenticado ou não tem as permissões necessárias, o componente renderiza um redirecionamento para a página de login ou para uma página de acesso proibido.
+
+// No geral, esse código implementa a navegação em uma aplicação web com React Router e adiciona recursos de autenticação e autorização. Ele usa os hooks useState e useEffect para gerenciar o estado e as atualizações de componentes.

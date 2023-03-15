@@ -1,10 +1,6 @@
 import { getUserLocalStorage } from "../context/authProvider/util";
 import api from "./api";
-/**
- * If the error message is 'Failed to refresh token', return 'Failed to refresh token', otherwise,
- * return the response data.
- * @returns The response.data or "Failed to refresh token"
- */
+
 export const apiRequest = async () => {
   try {
     const response = await api.get("/users/logged");
@@ -16,10 +12,6 @@ export const apiRequest = async () => {
   }
 };
 
-/**
- * It checks if the user is an admin by making an API call to the server.
- * @returns A promise.
- */
 export const isAuthenticatedAdmin = async () => {
   const data = await apiRequest();
   if (data && data.roles && data.roles.length > 0) {
@@ -35,11 +27,7 @@ export const isAuthenticatedAdmin = async () => {
   return "false";
 };
 
-/**
- * It makes an API call to the server, and if the server returns a valid response, it returns true,
- * otherwise it returns false.
- * @returns A promise.
- */
+
 export const isAuthenticated = async () => {
   const data = await apiRequest();
   if (data && data.roles && data.roles.length > 0) {
@@ -62,3 +50,9 @@ export const isLogged = () => {
   }
   return true;
 };
+
+// apiRequest: realiza uma chamada à API utilizando o método GET para /users/logged. Caso a chamada seja bem-sucedida, retorna os dados recebidos. Caso ocorra um erro, verifica se a mensagem do erro é "Failed to refresh token" e retorna essa mensagem em caso positivo.
+// isAuthenticatedAdmin: verifica se o usuário autenticado possui a permissão ROLE_ADMIN. Para isso, chama a função apiRequest e verifica se o objeto retornado possui a propriedade roles e se alguma das suas entradas possui o valor ROLE_ADMIN.
+// isAuthenticated: verifica se o usuário autenticado possui a permissão ROLE_USER. Para isso, chama a função apiRequest e verifica se o objeto retornado possui a propriedade roles e se alguma das suas entradas possui o valor ROLE_USER.
+// isLogged: verifica se há um usuário autenticado armazenado no localStorage. Retorna false se não houver usuário armazenado e true caso contrário.
+// Essas funções são utilizadas para autenticar usuários em diferentes níveis de acesso e verificar se um usuário está autenticado.

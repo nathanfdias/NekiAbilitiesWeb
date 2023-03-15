@@ -38,3 +38,11 @@ function isUserStorage(object: any): object is IUser {
     Array.isArray(object.roles)
   );
 }
+
+// Armazenagem e obtenção de dados de usuário na localStorage do navegador: setUserLocalStorage e getUserLocalStorage.
+
+// A função setUserLocalStorage recebe um objeto user contendo as informações do usuário e o armazena na localStorage do navegador, convertendo o objeto para uma string JSON.
+
+// A função getUserLocalStorage retorna o objeto armazenado na localStorage do navegador e o converte de volta para um objeto, verificando se o objeto contém as propriedades esperadas de um objeto de usuário.
+
+// A função isUserStorage é uma função auxiliar usada pela getUserLocalStorage para verificar se o objeto retornado da localStorage é um objeto de usuário válido.
