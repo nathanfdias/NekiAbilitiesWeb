@@ -12,7 +12,7 @@ Full Stack Project
 ## 📋 Índice
 
 - [Observações](#-observações)
-- [Swagger Documentado](#👾-web-site-work)
+- [Web site work](#👾-web-site-work)
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
 - [Como executar o projeto](#-como-executar-o-projeto)
 - [Construído com](#%EF%B8%8F-construído-com)
