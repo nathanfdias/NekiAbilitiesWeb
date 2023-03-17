@@ -23,7 +23,8 @@ Full Stack Project
 ## 👾 Web site work
 
 <img src="/src/assets/showWebSite.gif" heigth="600">
-<img src="/src/assets/show404.gif" heigth="600">
+</br>
+<img src="/src/assets/show404.jpg" heigth="600">
 
 ---
 
