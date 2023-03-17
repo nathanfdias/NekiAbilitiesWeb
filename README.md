@@ -23,6 +23,7 @@ Full Stack Project
 ## 👾 Web site work
 
 <img src="/src/assets/showWebSite.gif" heigth="600">
+<img src="/src/assets/show404.gif" heigth="600">
 
 ---
 
@@ -33,6 +34,7 @@ Full Stack Project
 2- Token e RefreshToken.</br>
 3- Acesso ao perfil apenas, logado.</br>
 4- Em caso de tentativa de adicionar ou criar skills deslogado, erro será emitido.</br>
+5- Page 404 notFound para links desconhecidos. </br>
 
 
 --- 
