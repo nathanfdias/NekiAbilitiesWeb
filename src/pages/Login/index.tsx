@@ -27,6 +27,7 @@ import api from '../../service/api';
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [checked, setChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const auth = useAuth();
@@ -48,9 +49,22 @@ export function Login() {
       password: password,
     })
     .then((request) => {
-      toast.success("Login successful !");
-      auth.authenticate(request.data);
-      navigate("/");
+      if(checked){
+        const now = new Date(); // Cria um objeto Date com a data e hora atual
+        now.setFullYear(now.getFullYear() + 1); // Adiciona 1 ano ao valor atual do ano
+        const timestamp = now.getTime(); // Obtém o timestamp em milissegundos
+        localStorage.setItem('cacheTime', timestamp.toString());
+        toast.success("Login successful !");
+        auth.authenticate(request.data);
+        navigate("/");
+      } else {
+        const now = Math.floor(Date.now() / 1000); // Cria um objeto Date com a data e hora atual
+        const timestamp = now + 3600; // Obtém o timestamp em milissegundos
+        localStorage.setItem('cacheTime', timestamp.toString());
+        toast.success("Login successful !");
+        auth.authenticate(request.data);
+        navigate("/");
+      }
     })
     .catch((err) => {
       toast.error(err.response.data.message);
@@ -85,7 +99,7 @@ export function Login() {
               </InputPasswordVisibility>
             </InputPasswordContent>
             <CheckBoxContainer>
-              <CheckBoxRemembered type="checkbox" id="check" name="check" />
+              <CheckBoxRemembered type="checkbox" id="check" name="check" onClick={() => setChecked(true)}/>
               <Label>Lembrar de mim</Label>
             </CheckBoxContainer>
           </InputContainer>

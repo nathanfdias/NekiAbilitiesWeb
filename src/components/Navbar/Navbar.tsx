@@ -39,6 +39,7 @@ export function Navbar() {
       .post("/auth/signout")
       .then(() => {
         localStorage.removeItem("user");
+        localStorage.removeItem("cacheTime");
         navigate("/");
         toast.warning("Usuário deslogado");
       })

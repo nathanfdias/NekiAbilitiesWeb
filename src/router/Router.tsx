@@ -22,41 +22,6 @@ interface RoutesPath {
   path: string;
 }
 
-const PrivateAdmin = ({ children }: PrivateAdminProps): JSX.Element => {
-  const [isAuthenticated, setIsAuthenticated] = useState<String | undefined>(
-    undefined
-  );
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const auth = await isAuthenticatedAdmin();
-        setIsAuthenticated(auth);
-        setIsLoading(false);
-      } catch (error) {
-        setIsAuthenticated("false");
-      }
-    };
-    checkAuth();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="text-center" style={{ fontSize: "45px" }}>
-        Loading...
-      </div>
-    );
-  } else if (isAuthenticated === "true") {
-    return <>{children}</>;
-  } else if (isAuthenticated === "Failed to refresh token") {
-    localStorage.removeItem("user");
-    return <Navigate to="/login" />;
-  } else {
-    return <Navigate to="/forbidden" />;
-  }
-};
-
 const PrivateRoute = ({ children }: PrivateAdminProps): JSX.Element => {
   const [isAuth, setIsAuthenticated] = useState<String | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
@@ -100,6 +65,26 @@ const IsLoggedIn = ({ children }: PrivateAdminProps): JSX.Element => {
   }
 };
 
+const CacheTime = ({ children }: PrivateAdminProps): JSX.Element => {
+
+  const cacheTime = localStorage.getItem('cacheTime');
+  if (cacheTime) {
+    const dateNow = Math.floor(Date.now() / 1000);
+    const cacheTimestamp = parseInt(cacheTime); 
+
+    if (dateNow >= cacheTimestamp) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("cacheTime");
+      return <Navigate to="/login" />;
+    } else {
+      return <>{children}</>;
+    }
+  }
+  
+  return <Navigate to="/login" />
+};
+
+
 export function Router() {
   return (
     <Routes>
@@ -115,8 +100,8 @@ export function Router() {
       <Route path="/register" element={ <IsLoggedIn><Register /></IsLoggedIn>}></Route>
       {/* <Route path="/catalog" element={<PrivateRoute><Catalog /></PrivateRoute>}></Route> */}
       <Route path="/catalog" element={<Catalog />}></Route>
-      <Route path="/perfil" element={<Perfil />}></Route>
-      <Route path="/abilityForm" element={<AbilityForm />}></Route>
+      <Route path="/perfil" element={<CacheTime><Perfil /></CacheTime>}></Route>
+      <Route path="/abilityForm" element={<CacheTime><AbilityForm /></CacheTime>}></Route>
       <Route path="/404" element={<NotFound />} />
       <Route path="*" element={<Navigate to="/404" />} />
     </Routes>

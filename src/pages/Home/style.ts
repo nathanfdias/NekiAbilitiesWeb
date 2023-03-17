@@ -11,6 +11,11 @@ height: 100%;
 display: flex;
 align-items: center;
 background-color: #FFFAFA;
+@media screen and (max-width: 820px){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const HomeDescript = styled.div`
@@ -23,6 +28,12 @@ export const HomeDescript = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  @media screen and (max-width: 820px){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const HomeImageIlustration = styled.div`
@@ -31,15 +42,29 @@ export const HomeImageIlustration = styled.div`
   background-image: url(${imageRight});
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  @media screen and (max-width: 1155px){
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+  };
+  @media screen and (max-width: 820px){
+    display: none;
+  }
 `;
 
 export const Test = styled.div`
-max-width: 70%;
+  max-width: 70%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: 1rem;
+  @media screen and (max-width: 820px){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Logo = styled.img`
